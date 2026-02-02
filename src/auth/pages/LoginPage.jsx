@@ -3,9 +3,9 @@ import './LoginPage.css';
 
 export const LoginPage = () => {
     return (
-        <div className="container login-container">
-            <div className="row">
-                <div className="col-md-6 login-form-1">
+        <div className="container login-container vh-100 d-flex justify-content-center align-items-center">
+            <div className="row ">
+                <div className="col-md-6 login-form-1" style={{ minWidth: '400px' }}>
                     <h3>Ingreso</h3>
                     <form>
                         <div className="form-group mb-2">
@@ -32,7 +32,7 @@ export const LoginPage = () => {
                     </form>
                 </div>
 
-                <div className="col-md-6 login-form-2">
+                <div className="col-md-6 login-form-2" style={{ minWidth: '400px' }}>
                     <h3>Registro</h3>
                     <form>
                         <div className="form-group mb-2">
