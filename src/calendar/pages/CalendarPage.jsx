@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { NavBar } from "../components/NavBar"
 import { localizer } from '../../helpers/calendarLocalizer'
 import { getMessagesEs } from '../../helpers/getMessages'
+import { CalendarEvent } from '../components/CalendarEvent'
 
 
 
@@ -26,7 +27,7 @@ export const CalendarPage = () => {
     const [lastView, setLastView] = useState('month')  // Vista por defecto
 
     const eventStyleGetter = (event, start, end, isSelected) => {
-        console.log({ event, start, end, isSelected })
+        // console.log({ event, start, end, isSelected })
         const style = {
             backgroundColor: '#158fd3',
             borderRadius: '5px',
@@ -56,6 +57,9 @@ export const CalendarPage = () => {
                 messages={getMessagesEs()}
                 eventPropGetter={eventStyleGetter}
                 onView={onViewChanged}
+                components={{
+                    event: CalendarEvent
+                }}
             />
         </>
     )
