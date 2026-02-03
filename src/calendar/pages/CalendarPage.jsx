@@ -8,6 +8,7 @@ import { NavBar } from "../components/NavBar"
 import { localizer } from '../../helpers/calendarLocalizer'
 import { getMessagesEs } from '../../helpers/getMessages'
 import { CalendarEvent } from '../components/CalendarEvent'
+import { CalendarModal } from '../components/CalendarModal'
 
 
 
@@ -72,6 +73,7 @@ export const CalendarPage = () => {
                 onDoubleClickEvent={onDoubleClick}
                 onSelectEvent={onSelect}
             />
+            <CalendarModal />
         </>
     )
 }
