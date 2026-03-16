@@ -10,25 +10,16 @@ import { getMessagesEs } from '../../helpers/getMessages'
 import { CalendarEvent } from '../components/CalendarEvent'
 import { CalendarModal } from '../components/CalendarModal'
 import { useUiStore } from '../../hooks'
+import { useCalendarStore } from '../../hooks/useCalendarStore'
 
 
 
-const events = [{
-    title: 'Cumpleaños',
-    notes: 'Hay que comprar una torta',
-    start: new Date(),
-    end: addHours(new Date(), 2),
-    bgColor: '#eb4b4c',
-    user: {
-        _id: '123',
-        name: 'Miguel'
-    }
-}]
 
 export const CalendarPage = () => {
     const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week');  // Vista por defecto
 
     const {openDateModal} = useUiStore();
+    const {events} = useCalendarStore();
 
     const eventStyleGetter = (event, start, end, isSelected) => {
         // console.log({ event, start, end, isSelected })
