@@ -19,7 +19,7 @@ export const CalendarPage = () => {
     const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week');  // Vista por defecto
 
     const {openDateModal} = useUiStore();
-    const {events} = useCalendarStore();
+    const {events,setActiveEvent} = useCalendarStore();
 
     const eventStyleGetter = (event, start, end, isSelected) => {
         // console.log({ event, start, end, isSelected })
@@ -39,7 +39,8 @@ export const CalendarPage = () => {
     }
     
     const onSelect = (event) => {
-        console.log({ click: event })
+        // console.log({ click: event })
+        setActiveEvent(event);
     }
 
     const onViewChanged = (event) => {
