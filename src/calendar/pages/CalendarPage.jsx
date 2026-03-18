@@ -11,6 +11,7 @@ import { CalendarEvent } from '../components/CalendarEvent'
 import { CalendarModal } from '../components/CalendarModal'
 import { useUiStore } from '../../hooks'
 import { useCalendarStore } from '../../hooks/useCalendarStore'
+import { FabAddNew } from '../components/FabAddNew'
 
 
 
@@ -70,6 +71,7 @@ export const CalendarPage = () => {
                 onSelectEvent={onSelect}
             />
             <CalendarModal />
+            <FabAddNew/>
         </>
     )
 }
