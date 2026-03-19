@@ -12,6 +12,7 @@ import { CalendarModal } from "../components/CalendarModal";
 import { useUiStore } from "../../hooks";
 import { useCalendarStore } from "../../hooks/useCalendarStore";
 import { FabAddNew } from "../components/FabAddNew";
+import { FabDelete } from "../components/FabDelete";
 
 export const CalendarPage = () => {
   const [lastView, setLastView] = useState(
@@ -69,6 +70,7 @@ export const CalendarPage = () => {
         onSelectEvent={onSelect}
       />
       <FabAddNew />
+      <FabDelete />
       <CalendarModal />
     </>
   );
