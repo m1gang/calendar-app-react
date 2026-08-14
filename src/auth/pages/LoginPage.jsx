@@ -17,7 +17,7 @@ const registerFormFields = {
 };
 
 export const LoginPage = () => {
-  const { startLogin, errorMessage } = useAuthStore();
+  const { startLogin, startRegister, errorMessage } = useAuthStore();
 
   const {
     loginEmail,
@@ -40,11 +40,22 @@ export const LoginPage = () => {
 
   const registerSubmit = (event) => {
     event.preventDefault();
-    console.log({
-      registerName,
-      registerEmail,
-      registerPassword,
-      registerPassword2,
+
+    if (registerPassword !== registerPassword2) {
+      sileo.error({
+        title: "Error de autenticación",
+        description: (
+          <span className="text-white font-medium text-center">
+            Las contraseñas no coinciden
+          </span>
+        ),
+        fill: "dark",
+      });
+    }
+    startRegister({
+      email: registerEmail,
+      name: registerName,
+      password: registerPassword,
     });
   };
 
