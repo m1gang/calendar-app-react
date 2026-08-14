@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { useForm } from "../../hooks/useForm";
 import "./LoginPage.css";
+import { sileo } from "sileo";
 
 const logingFormFields = {
   loginEmail: "",
@@ -15,7 +17,7 @@ const registerFormFields = {
 };
 
 export const LoginPage = () => {
-  const { startLogin } = useAuthStore();
+  const { startLogin, errorMessage } = useAuthStore();
 
   const {
     loginEmail,
@@ -45,6 +47,22 @@ export const LoginPage = () => {
       registerPassword2,
     });
   };
+
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      console.log(errorMessage);
+
+      sileo.error({
+        title: "Error de autenticación",
+        description: (
+          <span className="text-white font-medium text-center">
+            {errorMessage}
+          </span>
+        ),
+        fill: "dark",
+      });
+    }
+  }, [errorMessage]);
 
   return (
     <div className="container login-container vh-100 d-flex justify-content-center align-items-center">
