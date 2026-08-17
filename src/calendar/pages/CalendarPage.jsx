@@ -2,7 +2,7 @@ import { Calendar } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import { addHours } from "date-fns";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { NavBar } from "../components/NavBar";
 import { localizer } from "../../helpers/calendarLocalizer";
@@ -20,7 +20,7 @@ export const CalendarPage = () => {
   ); // Vista por defecto
 
   const { openDateModal } = useUiStore();
-  const { events, setActiveEvent } = useCalendarStore();
+  const { events, setActiveEvent, startLoadingEvents } = useCalendarStore();
 
   const eventStyleGetter = (event, start, end, isSelected) => {
     // console.log({ event, start, end, isSelected })
@@ -48,6 +48,10 @@ export const CalendarPage = () => {
     localStorage.setItem("lastView", event);
     setLastView(event);
   };
+
+  useEffect(() => {
+    startLoadingEvents();
+  }, []);
 
   return (
     <>
