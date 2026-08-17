@@ -8,6 +8,7 @@ import {
 } from "../store";
 import calendarApi from "../api/calendarApi";
 import { convertEventsToDateEvents } from "../helpers/convertEventsToDateEvents";
+import { sileo } from "sileo";
 
 export const useCalendarStore = () => {
   const dispatch = useDispatch();
@@ -19,19 +20,28 @@ export const useCalendarStore = () => {
   };
 
   const startSavingEvent = async (calendarEvent) => {
-    //todo: llegar al backend
+    try {
+      if (calendarEvent.id) {
+        // Actualizando
 
-    // TODO: Update event
-    if (calendarEvent._id) {
-      // Actualizando
-      dispatch(onUpdateEvent({ ...calendarEvent }));
-    } else {
-      //Creando
+        await calendarApi.put(`/events/${calendarEvent.id}`, calendarEvent);
+        dispatch(onUpdateEvent({ ...calendarEvent, user }));
 
-      const { data } = await calendarApi.post("/events", calendarEvent);
-      console.log(data);
+        return;
+      } else {
+        //Creando
 
-      dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }));
+        const { data } = await calendarApi.post("/events", calendarEvent);
+
+        dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }));
+      }
+    } catch (error) {
+      console.log(error.response.data.msg);
+
+      sileo.error({
+        title: "Error al guardar",
+        description: error.response.data.msg,
+      });
     }
   };
 
