@@ -51,6 +51,7 @@ export const LoginPage = () => {
         ),
         fill: "dark",
       });
+      return;
     }
     startRegister({
       email: registerEmail,
