@@ -39,19 +39,28 @@ export const useCalendarStore = () => {
         dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }));
       }
     } catch (error) {
-      console.log(error.response.data.msg);
+      console.log(error);
 
       sileo.error({
         title: "Error al guardar",
-        description: error.response.data.msg,
+        description: error.response?.data?.msg || "Error al procesar la solicitud",
       });
     }
   };
 
-  const startDeletingEvent = () => {
+  const startDeletingEvent = async () => {
     //todo: llegar al backend
-
-    dispatch(onDeleteEvent());
+    try {
+      await calendarApi.delete(`/events/${activeEvent.id}`);
+      dispatch(onDeleteEvent());
+    } catch (error) {
+      console.log(error);
+      sileo.error({
+        title: "Error al eliminar",
+        description:
+          error.response?.data?.msg || "No tienes privilegios para eliminar este evento",
+      });
+    }
   };
 
   const startLoadingEvents = async () => {
