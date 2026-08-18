@@ -26,7 +26,10 @@ export const useCalendarStore = () => {
 
         await calendarApi.put(`/events/${calendarEvent.id}`, calendarEvent);
         dispatch(onUpdateEvent({ ...calendarEvent, user }));
-
+        sileo.success({
+          title: "Evento actualizado",
+          description: "Evento actualizado correctamente",
+        });
         return;
       } else {
         //Creando
