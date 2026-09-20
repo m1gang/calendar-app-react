@@ -84,7 +84,7 @@ export const LoginPage = () => {
       <div className="auth-card">
         <header className="auth-header">
           <div className="auth-brand">
-            <span className="auth-brand-icon">
+            <span className="auth-brand-icon" aria-hidden="true">
               <i className="fa-regular fa-calendar-days"></i>
             </span>
             Calendar App
@@ -119,6 +119,7 @@ export const LoginPage = () => {
                     onChange={onLoginInputChange}
                     autoComplete="email"
                     required
+                    autoFocus
                   />
                 </div>
               </div>
@@ -319,6 +320,11 @@ export const LoginPage = () => {
             </form>
           </section>
         </div>
+
+        <footer className="auth-footer">
+          <i className="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <span>Tus datos están protegidos · Calendar App 2026</span>
+        </footer>
       </div>
     </div>
   );
