@@ -39,7 +39,7 @@ export const useCalendarStore = () => {
         dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }));
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
 
       sileo.error({
         title: "Error al guardar",
@@ -54,7 +54,7 @@ export const useCalendarStore = () => {
       await calendarApi.delete(`/events/${activeEvent.id}`);
       dispatch(onDeleteEvent());
     } catch (error) {
-      console.log(error);
+      console.error(error);
       sileo.error({
         title: "Error al eliminar",
         description:
@@ -69,7 +69,7 @@ export const useCalendarStore = () => {
       const events = convertEventsToDateEvents(data.eventos);
       dispatch(onLoadEvents(events));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

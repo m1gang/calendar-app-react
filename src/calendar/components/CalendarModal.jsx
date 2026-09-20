@@ -8,7 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { es } from "date-fns/locale/es";
 import { useUiStore } from "../../hooks";
 import { useCalendarStore } from "../../hooks/useCalendarStore";
-import { set } from "date-fns/fp";
 
 registerLocale("es", es);
 
@@ -83,9 +82,6 @@ export const CalendarModal = () => {
 
     if (formValues.title.length <= 0) return;
 
-    console.log(formValues);
-
-    //todo:
     await startSavingEvent(formValues);
     closeDateModal();
     setFormSubmitted(false);

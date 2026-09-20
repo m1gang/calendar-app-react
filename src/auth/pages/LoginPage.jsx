@@ -62,8 +62,6 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      console.log(errorMessage);
-
       sileo.error({
         title: "Error de autenticación",
         description: (

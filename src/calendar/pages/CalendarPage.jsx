@@ -1,7 +1,6 @@
 import { Calendar } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import { addHours } from "date-fns";
 import { useEffect, useState } from "react";
 
 import { NavBar } from "../components/NavBar";
@@ -44,7 +43,6 @@ export const CalendarPage = () => {
   };
 
   const onSelect = (event) => {
-    // console.log({ click: event })
     setActiveEvent(event);
   };
 
