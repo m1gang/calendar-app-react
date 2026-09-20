@@ -144,6 +144,55 @@
     padding-left: 2.4rem;
 }
 
+.auth-input-with-toggle {
+    padding-right: 2.6rem !important;
+}
+
+.auth-toggle {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #64748b;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-toggle:hover {
+    background: #f1f5f9;
+    color: #0b2545;
+}
+
+.auth-toggle-light {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.auth-toggle-light:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.auth-input-error {
+    border-color: #fca5a5 !important;
+}
+
+.auth-error {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fecaca;
+}
+
 .auth-input {
     border-radius: 10px !important;
     border: 1px solid #cbd5e1 !important;
