@@ -23,7 +23,7 @@ export const CalendarPage = () => {
   const { openDateModal } = useUiStore();
   const { events, setActiveEvent, startLoadingEvents } = useCalendarStore();
 
-  const eventStyleGetter = (event, start, end, isSelected) => {
+  const eventStyleGetter = (event) => {
     const isMyEvent =
       user.uid === event.user._id || user.uid === event.user.uid;
 

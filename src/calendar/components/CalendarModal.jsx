@@ -29,7 +29,6 @@ export const CalendarModal = () => {
   const { isDateModalOpen, closeDateModal } = useUiStore();
   const { activeEvent, startSavingEvent } = useCalendarStore();
 
-  const [isOpen, setIsOpen] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const [formValues, setFormValues] = useState({
