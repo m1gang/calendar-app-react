@@ -22,8 +22,6 @@ export const useCalendarStore = () => {
   const startSavingEvent = async (calendarEvent) => {
     try {
       if (calendarEvent.id) {
-        // Actualizando
-
         await calendarApi.put(`/events/${calendarEvent.id}`, calendarEvent);
         dispatch(onUpdateEvent({ ...calendarEvent, user }));
         sileo.success({
@@ -31,13 +29,10 @@ export const useCalendarStore = () => {
           description: "Evento actualizado correctamente",
         });
         return;
-      } else {
-        //Creando
-
-        const { data } = await calendarApi.post("/events", calendarEvent);
-
-        dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }));
       }
+      const { data } = await calendarApi.post("/events", calendarEvent);
+
+      dispatch(onAddNewEvent({ ...calendarEvent, id: data.evento.id, user }));
     } catch (error) {
       console.error(error);
 
@@ -49,7 +44,6 @@ export const useCalendarStore = () => {
   };
 
   const startDeletingEvent = async () => {
-    //todo: llegar al backend
     try {
       await calendarApi.delete(`/events/${activeEvent.id}`);
       dispatch(onDeleteEvent());

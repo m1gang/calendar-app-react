@@ -91,7 +91,7 @@ export const CalendarModal = () => {
       isOpen={isDateModalOpen}
       onRequestClose={onCloseModal}
       style={customStyles}
-      contentLabel="Example Modal"
+      contentLabel="Modal de evento"
       className="modal"
       overlayClassName="modal-fondo"
       closeTimeoutMS={200}
@@ -147,7 +147,6 @@ export const CalendarModal = () => {
 
         <div className="form-group mb-2">
           <textarea
-            type="text"
             className="form-control"
             placeholder="Notas"
             rows="5"
