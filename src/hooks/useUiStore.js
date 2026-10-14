@@ -1,33 +1,34 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { onCloseDateModal, onOpenDateModal } from "../store";
 
 export const useUiStore = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const { isDateModalOpen } = useSelector((state) => state.ui);
 
-    const {isDateModalOpen} = useSelector(state => state.ui);
+  const openDateModal = () => {
+    dispatch(onOpenDateModal());
+  };
 
-    const openDateModal = () => {
-        dispatch(onOpenDateModal());
+  const closeDateModal = () => {
+    dispatch(onCloseDateModal());
+  };
+
+  const toggleDateModal = () => {
+    if (isDateModalOpen) {
+      closeDateModal();
+    } else {
+      openDateModal();
     }
+  };
 
-    const closeDateModal = () => {
-        dispatch(onCloseDateModal());
-    }
+  return {
+    //* Propiedades
+    isDateModalOpen,
 
-    const toggleDateModal = ()=> {
-        (isDateModalOpen)
-        ? openDateModal()
-        : closeDateModal();
-    }
-
-    return {
-        //* Propiedades
-        isDateModalOpen,
-
-        //* Metodos
-        openDateModal,
-        closeDateModal,
-        toggleDateModal
-    }
-}
+    //* Metodos
+    openDateModal,
+    closeDateModal,
+    toggleDateModal,
+  };
+};
